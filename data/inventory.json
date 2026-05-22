@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Dagger",
+    "category": "weapon",
+    "equipped": true,
+    "requiresAttunement": false,
+    "attuned": false,
+    "acBonus": 0,
+    "armorBase": null,
+    "dexCap": null,
+    "attackBonus": 3,
+    "damage": "1d4 piercing",
+    "goldCost": 2,
+    "description": "A concealed blade for emergencies, rituals, and close-range defense."
+  },
+  {
+    "name": "Arcane Focus",
+    "category": "gear",
+    "equipped": true,
+    "requiresAttunement": false,
+    "attuned": false,
+    "acBonus": 0,
+    "armorBase": null,
+    "dexCap": null,
+    "attackBonus": null,
+    "damage": null,
+    "goldCost": 10,
+    "description": "A personal magical implement used to channel spellcasting without reaching for material components."
+  },
+  {
+    "name": "Component Pouch",
+    "category": "gear",
+    "equipped": false,
+    "requiresAttunement": false,
+    "attuned": false,
+    "acBonus": 0,
+    "armorBase": null,
+    "dexCap": null,
+    "attackBonus": null,
+    "damage": null,
+    "goldCost": 25,
+    "description": "A backup store of spell components and small ritual tools."
+  },
+  {
+    "name": "Explorer's Pack",
+    "category": "gear",
+    "equipped": false,
+    "requiresAttunement": false,
+    "attuned": false,
+    "acBonus": 0,
+    "armorBase": null,
+    "dexCap": null,
+    "attackBonus": null,
+    "damage": null,
+    "goldCost": 10,
+    "description": "Rations, rope, torches, and practical travel supplies for long stretches away from safety."
+  },
+  {
+    "name": "Magical Silver Ring",
+    "category": "magic",
+    "equipped": true,
+    "requiresAttunement": true,
+    "attuned": false,
+    "acBonus": 0,
+    "armorBase": null,
+    "dexCap": null,
+    "attackBonus": null,
+    "damage": null,
+    "goldCost": 0,
+    "description": "An editable magical ring placeholder. Tune its effect later if it becomes a stronger signature item."
+  }
+]

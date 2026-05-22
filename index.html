@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divna Character Sheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-top">
+        <div>
+          <h1>Divna the Samodiva</h1>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-identity-cards">
+            <div class="hero-id-card">
+              <span class="meta-label">Class</span>
+              <strong id="hero-class"></strong>
+            </div>
+            <div class="hero-id-card">
+              <span class="meta-label">Subclass</span>
+              <strong id="hero-subclass"></strong>
+            </div>
+            <div class="hero-id-card">
+              <span class="meta-label">Race</span>
+              <strong id="hero-race"></strong>
+            </div>
+            <div class="hero-id-card">
+              <span class="meta-label">Background</span>
+              <strong id="hero-background"></strong>
+            </div>
+          </div>
+          <div class="hero-identity-cards">
+            <div class="hero-id-card">
+              <span class="meta-label">Prof. Bonus</span>
+              <strong id="hero-prof-bonus"></strong>
+            </div>
+            <div class="hero-id-card">
+              <span class="meta-label">Passive Perception</span>
+              <strong id="hero-passive-perception"></strong>
+            </div>
+            <div class="hero-id-card">
+              <span class="meta-label">Passive Insight</span>
+              <strong id="hero-passive-insight"></strong>
+            </div>
+            <div class="hero-id-card hero-id-card--inspiration">
+              <span class="meta-label">Inspiration</span>
+              <label class="toggle">
+                <input type="checkbox" id="hero-inspiration-toggle" data-inspiration-toggle>
+                On
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-rest-card">
+        <button id="short-rest-button" class="ghost-button" type="button"
+          data-tooltip="Short Rest (1 hr): spend Hit Dice (d6 + CON) to recover HP. Sorcerers do not recover spell slots or Sorcery Points."
+        >Short Rest</button>
+        <button id="long-rest-button" class="accent-button" type="button">Long Rest</button>
+      </div>
+    </header>
+
+    <nav class="tab-bar" aria-label="Character sheet sections">
+      <button class="tab-button is-active" data-tab="overview" type="button">Stats</button>
+      <button class="tab-button" data-tab="combat" type="button">Combat</button>
+      <button class="tab-button" data-tab="spells" type="button">Spells</button>
+      <button class="tab-button" data-tab="inventory" type="button">Inventory</button>
+      <button class="tab-button" data-tab="traits" type="button">Traits</button>
+    </nav>
+
+    <main>
+      <section class="tab-panel is-active" data-panel="overview">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Ability Scores</h2>
+            <p>Modifiers update automatically from the base score.</p>
+          </div>
+          <div id="ability-grid" class="ability-grid"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading inline-heading">
+            <div>
+              <h2>Skills</h2>
+              <p>The total bonus leads the layout, with proficiency and source ability close behind.</p>
+            </div>
+          </div>
+          <div id="skills-grid" class="skills-grid"></div>
+        </section>
+
+        <div class="panel-grid top-grid">
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Proficiencies</h2>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.9rem;">
+              <div class="inventory-group">
+                <span class="inventory-group-label">Armor</span>
+                <div class="inventory-stats">
+                  <span class="stat-chip">Light Armor</span>
+                </div>
+              </div>
+              <div class="inventory-group">
+                <span class="inventory-group-label">Weapons</span>
+                <div class="inventory-stats">
+                  <span class="stat-chip">Simple Weapons</span>
+                </div>
+              </div>
+              <div class="inventory-group">
+                <span class="inventory-group-label">Tools &amp; Vehicles</span>
+                <div class="inventory-stats">
+                  <span class="stat-chip">Land Vehicles</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Languages</h2>
+            </div>
+            <div class="inventory-stats">
+              <span class="stat-chip">Common</span>
+              <span class="stat-chip">Elvish</span>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="combat">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Combat Overview</h2>
+          </div>
+          <div id="combat-overview" class="combat-overview-grid"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Conditions</h2>
+          </div>
+          <div id="conditions-grid" class="conditions-grid"></div>
+        </section>
+
+        <div class="panel-grid action-grid">
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Movement</h2>
+            </div>
+            <div id="movement-list" class="card-stack"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Actions</h2>
+            </div>
+            <div id="actions-list" class="card-stack"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Bonus Actions</h2>
+            </div>
+            <div id="bonus-actions-list" class="card-stack"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Reactions</h2>
+            </div>
+            <div id="reactions-list" class="card-stack"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="spells">
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Known Spells</h2>
+            </div>
+            <div id="known-spells" class="spell-list"></div>
+          </section>
+
+          <div class="spells-bottom-row">
+            <section class="panel">
+              <div class="panel-heading">
+                <h2>Sorcery Points</h2>
+              </div>
+              <div id="sorcery-points"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-heading">
+                <h2>Metamagic</h2>
+              </div>
+              <div id="metamagic-list" class="metamagic-list"></div>
+            </section>
+          </div>
+
+        <section class="panel spells-bottom-panel">
+          <div class="panel-heading inline-heading">
+            <div>
+              <h2>Wild Magic Table</h2>
+            </div>
+            <label class="toggle">
+              <input id="wild-magic-table-toggle" type="checkbox" data-combat-toggle="wildMagicTableUsed">
+              Used
+            </label>
+          </div>
+          <div id="wild-magic-list" class="card-stack two-column"></div>
+        </section>
+      </section>
+
+      <section class="tab-panel" data-panel="inventory">
+        <section class="panel">
+          <div class="panel-heading inline-heading">
+            <div>
+              <h2>Inventory</h2>
+            </div>
+            <button class="ghost-button" data-list-add="inventory" type="button">Add Item</button>
+          </div>
+          <div class="inventory-group">
+            <span class="inventory-group-label">Currency</span>
+            <div id="coins-tracker" class="coins-tracker"></div>
+          </div>
+          <div class="inventory-group">
+            <span class="inventory-group-label">Attunement</span>
+            <div id="attunement-tracker" class="attunement-tracker"></div>
+          </div>
+          <div id="inventory-list" class="inventory-list"></div>
+        </section>
+      </section>
+
+      <section class="tab-panel" data-panel="traits">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Traits & Features</h2>
+          </div>
+          <div id="traits-list" class="traits-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>Changes save in your browser automatically. Firebase sync can be wired in later by extending the save and load functions in the script.</p>
+    </footer>
+  </div>
+
+  <div id="tooltip" class="tooltip"></div>
+
+  <div id="item-dialog" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="item-dialog-title">
+    <div class="modal-box">
+      <form>
+        <div class="dialog-header">
+          <h3 class="dialog-title" id="item-dialog-title"></h3>
+        </div>
+        <div class="dialog-fields"></div>
+        <div class="dialog-footer">
+          <button type="button" class="ghost-button dialog-cancel">Cancel</button>
+          <button type="submit" class="accent-button">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="short-rest-dialog" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="short-rest-dialog-title">
+    <div class="modal-box">
+      <div class="dialog-header">
+        <h3 class="dialog-title" id="short-rest-dialog-title">Short Rest</h3>
+      </div>
+      <div class="dialog-fields" id="short-rest-fields"></div>
+      <div class="dialog-footer">
+        <button type="button" class="ghost-button" id="short-rest-cancel" style="display:none">Cancel</button>
+        <button type="button" class="accent-button" id="short-rest-action">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="long-rest-dialog" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="long-rest-dialog-title">
+    <div class="modal-box">
+      <div class="dialog-header">
+        <h3 class="dialog-title" id="long-rest-dialog-title">Long Rest</h3>
+      </div>
+      <div class="dialog-fields" id="long-rest-fields"></div>
+      <div class="dialog-footer">
+        <button type="button" class="ghost-button" id="long-rest-cancel">Cancel</button>
+        <button type="button" class="accent-button" id="long-rest-confirm">Take Long Rest</button>
+      </div>
+    </div>
+  </div>
+
+  <template id="loading-state-template">
+    <div class="callout">Loading editable character data...</div>
+  </template>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

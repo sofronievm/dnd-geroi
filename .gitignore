@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependency directories (not applicable now, but future-proof)
+node_modules/
+
+# Build output (if a bundler is added later)
+dist/
+build/
+
+# Local env files
+.env
+.env.local
+
+# The old monolithic script is superseded by js/ — safe to delete
+# script.js

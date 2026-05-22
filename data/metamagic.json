@@ -1,0 +1,18 @@
+[
+  {
+    "id": "twinned-spell",
+    "name": "Twinned Spell",
+    "cost": 1,
+    "costNote": "= spell level (min 1)",
+    "requirement": "The spell must target only one creature and must not have a range of Self.",
+    "description": "When you cast a spell that targets only one creature and doesn't have a range of Self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (minimum 1 sorcery point if the spell is a cantrip)."
+  },
+  {
+    "id": "quickened-spell",
+    "name": "Quickened Spell",
+    "cost": 2,
+    "costNote": null,
+    "requirement": "The spell must have a casting time of 1 action.",
+    "description": "When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting. You can't modify a spell this way if you've already cast a spell of 1st level or higher on the current turn, nor can you cast such a spell on this turn after using Quickened Spell."
+  }
+]

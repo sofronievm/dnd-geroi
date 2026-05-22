@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Shapechanger",
+    "category": "racial",
+    "source": "Changeling",
+    "description": "As a Magic action, you alter your appearance and voice. You can adjust height, weight, facial features, skin colour, hair, and distinguishing marks. The new form must be humanoid. The transformation lasts until you die or use this trait again."
+  },
+  {
+    "name": "Changeling Instincts",
+    "category": "racial",
+    "source": "Changeling",
+    "description": "Your awareness of social nuance runs deep. You gain proficiency in two of the following skills of your choice: Deception, Insight, Intimidation, Performance, or Persuasion."
+  },
+  {
+    "name": "Wild Magic Surge",
+    "category": "class",
+    "source": "Sorcerer 1",
+    "link": "spells",
+    "description": "Once per long rest you can unleash a surge of untamed magic. Roll a d10 on the Wild Magic Surge table to create a random magical effect. See the Spells tab."
+  },
+  {
+    "name": "Font of Magic",
+    "category": "class",
+    "source": "Sorcerer 2",
+    "link": "spells",
+    "description": "You have sorcery points equal to your Sorcerer level. All points are restored on a Long Rest. You can spend or convert them via Flexible Casting: convert slots into points (1 per slot level) or spend points to create new slots. See the Spells tab."
+  },
+  {
+    "name": "Metamagic",
+    "category": "class",
+    "source": "Sorcerer 3",
+    "link": "spells",
+    "description": "You shape your spells with Metamagic options powered by sorcery points. You know two options at 3rd level, and gain more at higher levels. Unless otherwise noted, only one option can be applied per spell. See the Spells tab."
+  },
+  {
+    "name": "Medic",
+    "category": "feat",
+    "source": "Feat",
+    "description": "You have trained in battlefield medicine. You gain proficiency in Medicine. When a creature uses Hit Dice during a Short Rest while you tend to it, it adds your Proficiency Bonus to each die rolled. Once per Short Rest you can stabilise a creature at 0 HP as a Bonus Action without a Medicine check."
+  },
+  {
+    "name": "Shapechanger",
+    "category": "lycanthropy",
+    "source": "Werewolf",
+    "description": "As an action you polymorph into a wolf-humanoid hybrid, into a wolf, or back into your true form. Your statistics remain the same in each form except where noted. Equipment does not transform with you. You revert to your true form if you die."
+  },
+  {
+    "name": "Keen Senses",
+    "category": "lycanthropy",
+    "source": "Werewolf",
+    "description": "You have advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Damage Immunities",
+    "category": "lycanthropy",
+    "source": "Werewolf",
+    "description": "You are immune to bludgeoning, piercing, and slashing damage from non-magical attacks that are not made with silvered weapons."
+  },
+  {
+    "name": "Hybrid Form",
+    "category": "lycanthropy",
+    "source": "Werewolf",
+    "description": "Speed 30 ft. Natural Armor (AC 12). Multiattack: one Bite and one Claws attack per turn. Bite +4 to hit, reach 5 ft. — 1d8+2 piercing; on a hit the target makes a DC 12 Constitution save or is cursed with lycanthropy. Claws +4 to hit, reach 5 ft. — 2d4+2 slashing. Use your own Strength modifier if it is higher than +2 for attack and damage rolls."
+  },
+  {
+    "name": "Wolf Form",
+    "category": "lycanthropy",
+    "source": "Werewolf",
+    "description": "Speed 40 ft. Natural Armor (AC 12). Bite +4 to hit, reach 5 ft. — 2d6+2 piercing; target makes DC 11 Strength save or is knocked Prone. Pack Tactics: you have advantage on attack rolls against a creature if at least one ally is within 5 ft. of it and not incapacitated. You cannot speak or cast spells in this form."
+  },
+  {
+    "name": "Folk Hero Proficiencies",
+    "category": "background",
+    "source": "Folk Hero",
+    "description": "You gain proficiency in Animal Handling and Survival. You also gain proficiency with one type of Artisan's Tools of your choice and Vehicles (Land)."
+  },
+  {
+    "name": "Rustic Hospitality",
+    "category": "background",
+    "source": "Folk Hero",
+    "description": "Since you come from the common folk, you fit in among them with ease. You can find a place to hide, rest, or recuperate among commoners unless you have shown yourself to be a danger to them. They will shield you from the law or anyone else searching for you, though they will not risk their lives for you."
+  }
+]
