@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Only the single "divna" character document is accessible.
+    // Any authenticated user (even anonymous) may read or write it.
+    // All other paths are implicitly denied.
+    match /characters/divna {
+      allow read, write: if request.auth != null;
+    }
+
+  }
+}
