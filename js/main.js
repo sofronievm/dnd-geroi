@@ -24,12 +24,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Schema migration: bump SCHEMA_VERSION whenever seed data changes in a
   // breaking way. On first load after a bump the affected collections are
   // reset to the current seed so stale state never wins.
-  const SCHEMA_VERSION = 14;
+  const SCHEMA_VERSION = 15;
   if ((state._schemaVersion ?? 0) < SCHEMA_VERSION) {
+    // v15: reset level-dependent character progression fields so stale cloud/local
+    // saves cannot keep older level 4 stats/spells after seed updates.
+    state.basics = structuredClone(defaultState.basics);
+    state.abilities = structuredClone(defaultState.abilities);
+    state.savingThrows = structuredClone(defaultState.savingThrows);
+    state.hp = structuredClone(defaultState.hp);
+    state.hitDice = structuredClone(defaultState.hitDice);
+    state.combat = structuredClone(defaultState.combat);
+    state.actions = structuredClone(defaultState.actions);
+    state.bonusActions = structuredClone(defaultState.bonusActions);
+    state.reactions = structuredClone(defaultState.reactions);
+    state.spellSlotsUsed = structuredClone(defaultState.spellSlotsUsed);
     state.traits = structuredClone(defaultState.traits);
     state.spells = structuredClone(defaultState.spells);
     state.skills = structuredClone(defaultState.skills);
-    state.basics.race = defaultState.basics.race;
 
     // v9: restore weapon stats (attackBonus, damage) that may be null in old saves.
     const seedWeaponByName = Object.fromEntries(
