@@ -27,14 +27,15 @@ export function replaceState(nextState) {
 
 /** Fetches JSON seed files and merges them into a fresh copy of baseState. */
 export async function buildDefaultState() {
-  const [spells, inventory, traits, metamagic] = await Promise.all([
+  const [spells, inventory, traits, metamagic, wildMagicTable] = await Promise.all([
     loadJsonCollection(DATA_FILES.spells, "spells"),
     loadJsonCollection(DATA_FILES.inventory, "inventory"),
     loadJsonCollection(DATA_FILES.traits, "traits"),
     loadJsonCollection(DATA_FILES.metamagic, "metamagic"),
+    loadJsonCollection(DATA_FILES.wildmagic, "wildMagicTable"),
   ]);
 
-  return { ...structuredClone(baseState), spells, inventory, traits, metamagic };
+  return { ...structuredClone(baseState), spells, inventory, traits, metamagic, wildMagicTable };
 }
 
 /** Loads and merges localStorage on top of the seed state. */
@@ -123,6 +124,11 @@ function hydrateCollectionItem(entry, type) {
     item.concentration = Boolean(item.concentration);
     item.ritual        = Boolean(item.ritual);
     item.upcast        = item.upcast ?? null;
+  }
+
+  if (type === "wildMagicTable") {
+    item.level = Number(item.level) || 0;
+    item.used = Boolean(item.used);
   }
 
   return item;

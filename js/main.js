@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Schema migration: bump SCHEMA_VERSION whenever seed data changes in a
   // breaking way. On first load after a bump the affected collections are
   // reset to the current seed so stale state never wins.
-  const SCHEMA_VERSION = 15;
+  const SCHEMA_VERSION = 16;
   if ((state._schemaVersion ?? 0) < SCHEMA_VERSION) {
     // v15: reset level-dependent character progression fields so stale cloud/local
     // saves cannot keep older level 4 stats/spells after seed updates.
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     state.spellSlotsUsed = structuredClone(defaultState.spellSlotsUsed);
     state.traits = structuredClone(defaultState.traits);
     state.spells = structuredClone(defaultState.spells);
+    state.wildMagicTable = structuredClone(defaultState.wildMagicTable);
     state.skills = structuredClone(defaultState.skills);
 
     // v9: restore weapon stats (attackBonus, damage) that may be null in old saves.

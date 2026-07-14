@@ -180,6 +180,7 @@ export function applyLongRest() {
     state.spellSlotsUsed[level] = 0;
   }
 
+  state.wildMagicTable ??= [];
   state.wildMagicTable.forEach((entry) => {
     entry.used = false;
   });
@@ -231,6 +232,13 @@ export function normalizeState() {
   conditionDefinitions.forEach((c) => {
     state.combat.conditions[c.key] = Boolean(state.combat.conditions[c.key]);
   });
+
+  state.wildMagicTable ??= [];
+  state.wildMagicTable = state.wildMagicTable.map((entry) => ({
+    ...entry,
+    level: clampNumber(entry.level, 0, 9, 0),
+    used: Boolean(entry.used),
+  }));
 
   const availableSlots = getAvailableSlots();
   for (let level = 1; level <= 9; level++) {

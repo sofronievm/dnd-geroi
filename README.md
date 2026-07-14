@@ -14,7 +14,9 @@ Deployed at: `https://<your-username>.github.io/dnd-geroi/`
 ├── data/
 │   ├── spells.json     Known spells seed data
 │   ├── inventory.json  Inventory seed data
-│   └── traits.json     Traits & features seed data
+│   ├── traits.json     Traits & features seed data
+│   ├── metamagic.json  Metamagic options seed data
+│   └── wildmagic.json  Wild Magic table seed data
 └── js/
     ├── constants.js    Game tables, skill/condition definitions, default character
     ├── state.js        LocalStorage persistence and deep-merge loader
