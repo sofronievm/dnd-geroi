@@ -69,6 +69,12 @@
     "description": "Speed 40 ft. Natural Armor (AC 12). Bite +4 to hit, reach 5 ft. — 2d6+2 piercing; target makes DC 11 Strength save or is knocked Prone. Pack Tactics: you have advantage on attack rolls against a creature if at least one ally is within 5 ft. of it and not incapacitated. You cannot speak or cast spells in this form."
   },
   {
+    "name": "Magical Guidance",
+    "category": "class",
+    "source": "Sorcerer 5",
+    "description": "When you make an ability check that fails, you can spend 1 sorcery point to reroll the d20. You must use the new roll, potentially turning the failure into a success."
+  },
+  {
     "name": "Folk Hero Proficiencies",
     "category": "background",
     "source": "Folk Hero",

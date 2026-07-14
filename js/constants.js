@@ -8,6 +8,7 @@ export const DATA_FILES = {
   inventory: "data/inventory.json",
   traits: "data/traits.json",
   metamagic: "data/metamagic.json",
+  wildmagic: "data/wildmagic.json",
 };
 
 // Sorcerer spell slots per character level (PHB 2024).
@@ -298,7 +299,7 @@ export const baseState = {
     background: "Folk Hero",
     className: "Sorcerer",
     subclass: "Wild Magic",
-    level: 4,
+    level: 5,
     speed: 30,
   },
 
@@ -336,12 +337,12 @@ export const baseState = {
     persuasion:    { proficient: true  },
   },
 
-  hp: { current: 26, max: 26, temp: 0 },
+  hp: { current: 32, max: 32, temp: 0 },
 
   hitDice: { used: 0 },
 
   combat: {
-    sorceryPointsCurrent: 4,
+    sorceryPointsCurrent: 5,
     mageArmorActive: false,
     wildMagicTableUsed: false,
     conditions: Object.fromEntries(conditionDefinitions.map((c) => [c.key, false])),
@@ -423,88 +424,6 @@ export const baseState = {
   ],
 
   spells: [],
-
-  wildMagicTable: [
-    {
-      id: crypto.randomUUID(),
-      name: "Polymorph",
-      level: 1,
-      used: false,
-      description: "This spell transforms a creature that you can see within range into a new form. An unwilling creature must make a Wisdom saving throw to avoid the effect. The spell has no effect on a shapechanger or a creature with 0 hit points. The transformation lasts for the duration, or until the target drops to 0 hit points or dies. The new form can be any beast whose challenge rating is equal to or less than the target's (or the target's level, if it doesn't have a challenge rating). The target's game statistics, including mental ability scores, are replaced by the statistics of the chosen beast. It retains its alignment and personality. The target assumes the hit points of its new form. When it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form. As long as the excess damage doesn't reduce the creature's normal form to 0 hit points, it isn't knocked unconscious. The creature is limited in the actions it can perform by the nature of its new form, and it can't speak, cast spells, or take any other action that requires hands or speech. The target's gear melds into the new form. The creature can't activate, use, wield, or otherwise benefit from any of its equipment.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Shield",
-      level: 1,
-      used: false,
-      description:
-        "An imperceptible barrier of magical force protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from Magic Missile.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Haste",
-      level: 1,
-      used: false,
-      description:
-        "Choose a willing creature that you can see within range. Until the spell ends, the target’s Speed is doubled, it gains a +2 bonus to Armor Class, it has Advantage on Dexterity saving throws, and it gains an additional action on each of its turns. That action can be used to take only the Attack (one attack only), Dash, Disengage, Hide, or Utilize action. When the spell ends, the target is Incapacitated and has a Speed of 0 until the end of its next turn, as a wave of lethargy washes over it.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Enlarge/Reduce",
-      level: 2,
-      used: false,
-      description:
-        "For the duration, the spell enlarges or reduces a creature or an object you can see within range (see the chosen effect below). A targeted object must be neither worn nor carried. If the target is an unwilling creature, it can make a Constitution saving throw. On a successful save, the spell has no effect. Everything that a targeted creature is wearing and carrying changes size with it. Any item it drops returns to normal size at once. A thrown weapon or piece of ammunition returns to normal size immediately after it hits or misses a target. Enlarge. The target’s size increases by one category—from Medium to Large, for example. The target also has Advantage on Strength checks and Strength saving throws. The target’s attacks with its enlarged weapons or Unarmed Strikes deal an extra 1d4 damage on a hit. Reduce. The target’s size decreases by one category—from Medium to Small, for example. The target also has Disadvantage on Strength checks and Strength saving throws. The target’s attacks with its reduced weapons or Unarmed Strikes deal 1d4 less damage on a hit (this can’t reduce the damage below 1).",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Fog Cloud",
-      level: 2,
-      used: false,
-      description:
-        "You create a 20-foot-radius Sphere of fog centered on a point within range. The Sphere is Heavily Obscured. It lasts for the duration or until a strong wind (such as one created by Gust of Wind) disperses it.Using a Higher-Level Spell Slot. The fog’s radius increases by 20 feet for each spell slot level above 1.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Grease",
-      level: 2,
-      used: false,
-      description:
-        "Nonflammable grease covers the ground in a 10-foot square centered on a point within range and turns it into Difficult Terrain for the duration. When the grease appears, each creature standing in its area must succeed on a Dexterity saving throw or have the Prone condition. A creature that enters the area or ends its turn there must also succeed on that save or fall Prone.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Magic Missile",
-      level: 3,
-      used: false,
-      description:
-        "You create three glowing darts of magical force. Each dart strikes a creature of your choice that you can see within range. A dart deals 1d4 + 1 Force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Misty Step",
-      level: 3,
-      used: false,
-      description:
-        "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space you can see.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Fireball",
-      level: 3,
-      used: false,
-      description:
-        "A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion. Each creature in a 20-foot-radius Sphere centered on that point makes a Dexterity saving throw, taking 8d6 Fire damage on a failed save or half as much damage on a successful one. Flammable objects in the area that aren’t being worn or carried start burning.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "Invisibility",
-      level: 4,
-      used: false,
-      description:
-        "A creature you touch has the Invisible condition until the spell ends. The spell ends early immediately after the target makes an attack roll, deals damage, or casts a spell.",
-    },
-  ],
 
   coins: { copper: 0, silver: 0, gold: 0 },
   inventory: [],
