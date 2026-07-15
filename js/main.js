@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Schema migration: bump SCHEMA_VERSION whenever seed data changes in a
   // breaking way. On first load after a bump the affected collections are
   // reset to the current seed so stale state never wins.
-  const SCHEMA_VERSION = 17;
+  const SCHEMA_VERSION = 18;
   if ((state._schemaVersion ?? 0) < SCHEMA_VERSION) {
     // v15: reset level-dependent character progression fields so stale cloud/local
     // saves cannot keep older level 4 stats/spells after seed updates.
@@ -71,6 +71,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         return { ...item, description: seedRing.description };
       });
     }
+
+    // v18: refresh seed-driven collections so published updates become visible
+    // even when older cloud/local arrays override default JSON data.
+    state.inventory = structuredClone(defaultState.inventory);
+    state.traits = structuredClone(defaultState.traits);
+    state.spells = structuredClone(defaultState.spells);
+    state.wildMagicTable = structuredClone(defaultState.wildMagicTable);
+    state.metamagic = structuredClone(defaultState.metamagic);
+    state.spellSlotsUsed = structuredClone(defaultState.spellSlotsUsed);
 
     state._schemaVersion = SCHEMA_VERSION;
   }
