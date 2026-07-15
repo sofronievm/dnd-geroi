@@ -306,6 +306,13 @@ function renderSorceryPoints() {
 
   const current = state.combat.sorceryPointsCurrent;
   const max = state.basics.level;
+  const secondFaceUsed = Boolean(state.combat.secondFaceUsed);
+  const secondFaceRingActive = state.inventory.some(
+    (item) => item.name === "Magical Silver Ring" && item.equipped && item.attuned
+  );
+  const secondFaceAvailable = secondFaceRingActive && !secondFaceUsed;
+  const secondFaceRegain = Math.floor(state.basics.level / 2);
+  const secondFacePotentialGain = Math.min(secondFaceRegain, Math.max(0, max - current));
   const track = Array.from({ length: max }, (_, i) => {
     const available = i < current;
     return `<span class="slot-mark ${available ? "is-used" : ""}" aria-hidden="true"></span>`;
@@ -318,6 +325,23 @@ function renderSorceryPoints() {
       <span class="slot-value">${current}</span>
       <div class="slot-track">${track}</div>
       <span class="slot-max">Max ${max}</span>
+    </article>
+    <article class="slot-card second-face-card"
+      data-tooltip="${escapeAttribute(
+        `Second Face (once per long rest).\\nRequires the Magical Silver Ring to be equipped and attuned.\\nRegain half your level in sorcery points: ${secondFaceRegain}.\\nCurrent use status: ${secondFaceUsed ? "Used" : (secondFaceRingActive ? "Available" : "Unavailable")}.\\nIf used now, SP gained: ${secondFacePotentialGain}.\\nDrawback: disadvantage on Insight checks.`
+      )}">
+      <div class="second-face-row">
+        <span class="slot-label">Second Face</span>
+        <span class="slot-max">${secondFaceUsed ? "Used" : (secondFaceRingActive ? "Available" : "Unavailable")}</span>
+      </div>
+      <div class="second-face-row">
+        <span class="slot-value">${secondFaceRegain}</span>
+        <span class="mini-label">SP on use</span>
+      </div>
+      <label class="toggle second-face-toggle">
+        <input type="checkbox" data-second-face-toggle ${secondFaceUsed ? "checked" : ""} ${secondFaceAvailable ? "" : "disabled"}>
+        Activate
+      </label>
     </article>`;
 }
 
@@ -685,12 +709,14 @@ function renderInventoryCard(item) {
   if (item.goldCost > 0) tags.push(`${item.goldCost} gp`);
 
   const tooltip = [
+    item.name,
     item.description,
     item.attackBonus != null ? `Attack: ${formatModifier(item.attackBonus)} to hit.` : "",
     item.damage ? `Damage: ${item.damage}.` : "",
     item.armorBase != null ? `Base AC: ${item.armorBase}.` : "",
     item.acBonus ? `AC bonus: +${item.acBonus}.` : "",
-  ].filter(Boolean).join(" ");
+    item.dexCap != null ? `Dex cap: ${item.dexCap}.` : "",
+  ].filter(Boolean).join("\\n");
 
   return `
     <article class="inventory-row" data-tooltip="${escapeAttribute(tooltip)}">
@@ -747,7 +773,7 @@ function renderTraits() {
     grouped["__other"] = other;
   }
 
-  document.getElementById("traits-list").innerHTML = categories
+  const traitSections = categories
     .filter((c) => grouped[c.key].length > 0)
     .map((c) => {
       const cards = grouped[c.key].map((trait) => {
@@ -774,4 +800,26 @@ function renderTraits() {
         </div>`;
     })
     .join("");
+
+  const magicItems = state.inventory.filter((item) => item.category === "magic");
+  const magicItemsSection = magicItems.length
+    ? `
+      <div class="inventory-group">
+        <span class="inventory-group-label">Magical Items</span>
+        <div class="card-stack two-column">
+          ${magicItems.map((item) => `
+            <article class="list-card action-ref-card"
+              data-navigate-tab="inventory"
+              data-tooltip="${escapeAttribute(item.description)}">
+              <div class="list-card-header">
+                <span class="trait-chip">${item.name}</span>
+                <div class="list-actions"><span class="action-ref-link">Inventory ↗</span></div>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </div>`
+    : "";
+
+  document.getElementById("traits-list").innerHTML = traitSections + magicItemsSection;
 }

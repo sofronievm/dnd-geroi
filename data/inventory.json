@@ -60,13 +60,13 @@
     "category": "magic",
     "equipped": true,
     "requiresAttunement": true,
-    "attuned": false,
+    "attuned": true,
     "acBonus": 0,
     "armorBase": null,
     "dexCap": null,
     "attackBonus": null,
     "damage": null,
     "goldCost": 0,
-    "description": "An editable magical ring placeholder. Tune its effect later if it becomes a stronger signature item."
+    "description": "Last Invitation: \nOnce per turn, when a humanoid fails a save against one of your spells, you can impose Charmed or Frightened until the end of your next turn; each use requires a DC 12 Wisdom save, and on a failure you have disadvantage on your next attack roll or spell save DC. \nSecond Face: Once per long rest, regain sorcery points equal to half your level (rounded down); you have disadvantage on Insight checks."
   }
 ]

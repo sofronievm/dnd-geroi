@@ -11,6 +11,7 @@ import {
   slotToSP,
   spToSlot,
   useMetamagic,
+  useSecondFace,
 } from "./mechanics.js";
 import { renderAll } from "./render.js";
 import { addListItem, editListItem, deleteListItem, showShortRestDialog, showLongRestDialog } from "./prompts.js";
@@ -118,6 +119,12 @@ function handleChange(event) {
 
   if (target.matches("[data-combat-field]")) {
     state.combat[target.dataset.combatField] = clampNumber(target.value, 0, state.basics.level, state.basics.level);
+    saveAndRender();
+    return;
+  }
+
+  if (target.matches("[data-second-face-toggle]")) {
+    if (target.checked) useSecondFace();
     saveAndRender();
     return;
   }
@@ -278,7 +285,7 @@ function handleTooltipShow(event) {
   if (!tooltipTarget) return;
 
   const tooltip = document.getElementById("tooltip");
-  tooltip.textContent = tooltipTarget.dataset.tooltip;
+  tooltip.textContent = (tooltipTarget.dataset.tooltip ?? "").replaceAll("\\n", "\n");
   tooltip.classList.add("is-visible");
   moveTooltip(event, tooltipTarget);
 }

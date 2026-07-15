@@ -135,6 +135,19 @@ export function useMetamagic(optionId) {
   state.combat.sorceryPointsCurrent -= option.cost;
 }
 
+// Second Face (Magical Silver Ring): once per long rest, regain half level SP (rounded down).
+export function useSecondFace() {
+  if (state.combat.secondFaceUsed) return;
+  const ringActive = state.inventory.some(
+    (item) => item.name === "Magical Silver Ring" && item.equipped && item.attuned
+  );
+  if (!ringActive) return;
+  const regain = Math.floor(state.basics.level / 2);
+  const spMax = state.basics.level;
+  state.combat.sorceryPointsCurrent = Math.min(spMax, state.combat.sorceryPointsCurrent + regain);
+  state.combat.secondFaceUsed = true;
+}
+
 // ---------------------------------------------------------------------------
 // Dynamic text resolution (replaces template strings in action descriptions)
 // ---------------------------------------------------------------------------
@@ -172,6 +185,7 @@ export function applyLongRest() {
   state.hp.temp = 0;
   state.combat.sorceryPointsCurrent = state.basics.level;
   state.combat.wildMagicTableUsed = false;
+  state.combat.secondFaceUsed = false;
   state.combat.mageArmorActive = false;
   state.hitDice ??= { used: 0 };
   state.hitDice.used = 0; // All Hit Dice are restored on a Long Rest (PHB 2024).
@@ -228,6 +242,7 @@ export function normalizeState() {
     state.basics.level
   );
   state.combat.wildMagicTableUsed = Boolean(state.combat.wildMagicTableUsed);
+  state.combat.secondFaceUsed = Boolean(state.combat.secondFaceUsed);
   state.combat.conditions ??= {};
   conditionDefinitions.forEach((c) => {
     state.combat.conditions[c.key] = Boolean(state.combat.conditions[c.key]);

@@ -388,6 +388,7 @@ export function showLongRestDialog() {
         <li>Temporary HP — cleared</li>
         <li>All Spell Slots — restored</li>
         <li>Sorcery Points — restored to full (<strong>${spMax}</strong>)</li>
+        <li>Second Face — cooldown reset</li>
         <li>All Hit Dice — restored (<strong>${level}</strong> available)</li>
         <li>Wild Magic Surge — cooldown reset</li>
         <li>Mage Armor — deactivated</li>

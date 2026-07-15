@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Schema migration: bump SCHEMA_VERSION whenever seed data changes in a
   // breaking way. On first load after a bump the affected collections are
   // reset to the current seed so stale state never wins.
-  const SCHEMA_VERSION = 16;
+  const SCHEMA_VERSION = 17;
   if ((state._schemaVersion ?? 0) < SCHEMA_VERSION) {
     // v15: reset level-dependent character progression fields so stale cloud/local
     // saves cannot keep older level 4 stats/spells after seed updates.
@@ -59,6 +59,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         damage:      item.damage      ?? seed.damage,
       };
     });
+
+    // v17: update the Magical Silver Ring description from placeholder text.
+    const seedRing = defaultState.inventory.find((item) => item.name === "Magical Silver Ring");
+    const oldRingDescription =
+      "An editable magical ring placeholder. Tune its effect later if it becomes a stronger signature item.";
+    if (seedRing?.description) {
+      state.inventory = state.inventory.map((item) => {
+        if (item.name !== "Magical Silver Ring") return item;
+        if (item.description && item.description !== oldRingDescription) return item;
+        return { ...item, description: seedRing.description };
+      });
+    }
 
     state._schemaVersion = SCHEMA_VERSION;
   }

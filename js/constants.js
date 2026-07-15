@@ -345,6 +345,7 @@ export const baseState = {
     sorceryPointsCurrent: 5,
     mageArmorActive: false,
     wildMagicTableUsed: false,
+    secondFaceUsed: false,
     conditions: Object.fromEntries(conditionDefinitions.map((c) => [c.key, false])),
     exhaustionLevel: 0,
   },
