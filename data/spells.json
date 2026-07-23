@@ -117,6 +117,39 @@
     "upcast": { "note": "+1 target per slot level above 3rd", "baseCount": 1, "perLevel": 1, "scaledLabel": "{n} creature(s)" }
   },
   {
+    "name": "Fireball",
+    "level": 3,
+    "school": "Evocation",
+    "castingTime": "1 action",
+    "range": "150 feet",
+    "duration": "Instantaneous",
+    "attackRoll": false,
+    "saveType": "DEX",
+    "damageDie": "8d6",
+    "damageType": "fire",
+    "conditions": "20-foot radius; creatures make DEX save for half damage. Fire spreads around corners and ignites flammable objects not being worn or carried.",
+    "concentration": false,
+    "ritual": false,
+    "description": "A bright streak flashes from your pointing finger to a point you choose within range then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot radius must make a Dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one. The fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried.",
+    "upcast": { "note": "+1d6 damage per slot level above 3rd", "baseCount": 8, "perLevel": 1, "scaledLabel": "{n}d6 fire" }
+  },
+  {
+    "name": "Counterspell",
+    "level": 3,
+    "school": "Abjuration",
+    "castingTime": "1 reaction, which you take when you see a creature within 60 feet of you casting a spell",
+    "range": "60 feet",
+    "duration": "Instantaneous",
+    "attackRoll": false,
+    "saveType": null,
+    "damageDie": null,
+    "damageType": null,
+    "conditions": "Automatically interrupts a spell of 3rd level or lower. For 4th level or higher, make a spellcasting ability check (DC 10 + the spell's level).",
+    "concentration": false,
+    "ritual": false,
+    "description": "You attempt to interrupt a creature in the process of casting a spell. If the creature is casting a spell of 3rd level or lower, its spell fails and has no effect. If it is casting a spell of 4th level or higher, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a success, the creature's spell fails and has no effect. At higher levels, when you cast this spell using a spell slot of 4th level or higher, the interrupted spell has no effect if its level is less than or equal to the level of the spell slot you used."
+  },
+  {
     "name": "Magic Missile",
     "level": 1,
     "school": "Evocation",
@@ -132,6 +165,22 @@
     "ritual": false,
     "description": "Create three glowing darts of magical force. Each dart automatically hits and deals 1d4+1 force damage. All three can target the same creature or different ones. Higher slots add one dart per level above 1st.",
     "upcast": { "note": "+1 dart per slot above 1st", "baseCount": 3, "perLevel": 1, "scaledLabel": "{n} darts (1d4+1 force each)" }
+  },
+  {
+    "name": "Mage Armor",
+    "level": 1,
+    "school": "Abjuration",
+    "castingTime": "1 action",
+    "range": "Touch",
+    "duration": "8 hours",
+    "attackRoll": false,
+    "saveType": null,
+    "damageDie": null,
+    "damageType": null,
+    "conditions": "Target's base AC becomes 13 + Dexterity modifier. Ends if target dons armor or if dismissed as an action.",
+    "concentration": false,
+    "ritual": false,
+    "description": "You touch a willing creature who isn't wearing armor, and a protective magical force surrounds it until the spell ends. The target's base AC becomes 13 + its Dexterity modifier. The spell ends if the target dons armor or if you dismiss the spell as an action."
   },
   {
     "name": "Shield",

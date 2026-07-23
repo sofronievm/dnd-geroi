@@ -4,7 +4,7 @@ A static **D&D 5.5e character sheet** for Divna the Samodiva, built with vanilla
 
 ## Live site
 
-Deployed at: `https://<your-username>.github.io/dnd-geroi/`
+Deployed at: `https://sofronievm.github.io/dnd-geroi/`
 
 ## Project structure
 
@@ -53,7 +53,7 @@ Then open `http://localhost:8123`.
 1. Push the repo to GitHub.
 2. Go to **Settings → Pages → Source → Deploy from a branch**.
 3. Select `main` (or whichever branch) and `/ (root)`.
-4. The site will be live at `https://<username>.github.io/<repo-name>/`.
+4. The site will be live at `https://sofronievm.github.io/dnd-geroi/`.
 
 ## Console debug API
 
